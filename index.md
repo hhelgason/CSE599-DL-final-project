@@ -4,7 +4,7 @@ CSE 599 Deep Learning final project - Hordur Helgason
 
 ## Introduction
 Applications of DL methods in streamflow modeling have yielded very good results, with DL models substantially outperforming benchmark physically based models (e.g. Kratzert et al., 2019). DL methods of modeling hydrologic processes in catchments where runoff primarily originates from snow and glacier melt have not yet received much attention from the scientific community. Accurately modeling river discharge in snow/glacier melt-dominated catchments is highly important for water resource management.
-In this final project, I trained an LSTM model to predict streamflow in snow/glacier melt-dominated catchments. 
+In this final project, I trained an LSTM model to predict streamflow in snow/glacier melt-dominated catchments. I also analized the states and activations of a trained LSTM, to see if the LSTM internals resemble physically meaningful quantities. 
 
 The aim of the project was to develop a model to be used in streamflow forecasts for hydropower operations in Iceland.
 
@@ -43,11 +43,13 @@ Various numbers of hidden layers were tested (20, 64, 96, 128, 196, 256).
 
 Results are evaluated with the NSE error metric.
 
-### Fine tuning
+Finally, the internal states and gate activations of the LSTM were analyzed. 
+
+<!-- ### Fine tuning
 Once a good mean NSE value for all basins had been obtained, the model was fine-tuned individually for two specific basins to maximize the performance for these basins. The two basins were selected because of they represent the inflow into hydropower reservoirs. Fine tuning involves.....
 
 Finally, the models were evaluated on the unseen test dataset. Also, the internal states and gate activations of the LSTM were analyzed. 
-
+ -->
 ## Results
 For the model classes that were tested, the entity-aware (EA-LSTM) performed better than the cuda-LSTM. For a hidden layer of 20, the cuda-LSTM resulted in a mean NSE of 0.64 vs. 0.72 for EA-LSTM. Thus, various numbers of hidden layers were tested for the EA-LSTM model. The training and validation losses are shown in figure 2, with higher run numbers corresponding to more hidden layers.
 
@@ -81,7 +83,9 @@ In figures 4-6, we plot the simulated vs. measured disharge for each gauge.
 |:--:| 
 | *Figure 6: Gauge 221: Jökulsá River. Measured vs. simulated streamflow for the test period.* |
 
+We see that the performance of these models is rather good, especially for gauge 221 (Jökulsá River).
 
+## LSTM states and activations
 
 # Further work
 For this project, training data was only available for 10 basins. Training on more basins would allow the model to better generalize and yield more accurate results. Although the model was trained on relatively few basins, its accuracy was good. These models can be used in daily inflow forecasts for hydropower operations in Iceland. 
