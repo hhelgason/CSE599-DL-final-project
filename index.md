@@ -40,6 +40,8 @@ The [NeuralHydrology](https://github.com/neuralhydrology/neuralhydrology) python
 Model training was performed on Google Colab.
 
 ### Model setup
+The models were trained on all 10 basins simultaniously.
+
 Two model classes of the NeuralHydrology library were tested, the CudaLSTM (a network that uses the standard PyTorch LSTM implementation) and an entity-aware LSTM model (EA-LSTM). The EA-LSTM ingests static attributes of the watersheds and uses these attributes to compute the input gate activations. In this study, the glaciated area of each basin was used as a static attribute.
 
 The model training was run for 50 epochs. The following hyperparameters of the model were kept fixed in all runs:
