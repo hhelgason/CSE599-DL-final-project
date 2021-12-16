@@ -14,9 +14,7 @@ The aim of the project was to develop a model to be used in streamflow forecasts
 ### Data
 
 #### Target data: Streamflow measurements
-#### Input data: Weather model output
-
-Streamflow measurements and weather model output data from a selection of 10 glacial rivers in Iceland were used for model development. The locations of the measurement gauges and corresponding watersheds can be seen in figure 1. 
+Streamflow measurements and weather model output data from a selection of 10 glacial rivers in Iceland were used for model development. The locations of the measurement gauges and corresponding watersheds can be seen in figure 1. The target variable is a timeseries of area-averaged streamflow values with a daily time resolution. 
 <!-- <img width="700" alt="image" src="https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/layout_1.png"> -->
 <!-- *Figure 1: Locations of gauges and corresponding watersheds used in this project* -->
 
@@ -24,7 +22,8 @@ Streamflow measurements and weather model output data from a selection of 10 gla
 |:--:| 
 | *Figure 1: Locations of the gauges and corresponding watersheds that are used in this project* |
 
-Weather parameters from an atmospheric reanalysis dataset on a 2x2 km grid over Iceland were averaged over each watershed. The specific weather parameters used are temperature, precipitation, solid ratio of precipitation, wind speed, and downwelling shortwave and longwave radiation. The target variable is a timeseries of area-averaged streamflow values with a daily time resolution. 
+#### Input data: Weather model output
+Weather parameters from an atmospheric reanalysis dataset on a 2x2 km grid over Iceland were averaged over each watershed. The specific weather parameters used are temperature, precipitation, solid ratio of precipitation, wind speed, and downwelling shortwave and longwave radiation. 
 
 The dataset was split as follows: 
 <!-- (11 years: 1999-10-01- 2010-09-30), validation (5 years: 2010-10-01 to 2015-09-30) and test (4 years: 2015-10-01 to 2019-08-31) sets. -->
