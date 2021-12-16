@@ -67,6 +67,27 @@ Three of the gauges in the dataset represent inflow into hydropower reservoirs. 
 | 112 | 0.734 | 0.711 | 128 |
 | 221 | 0.845 | 0.814  | 256 |
 
+In figures 4-6, we plot the simulated vs. measured disharge for each gauge. 
+
+| ![gauge_96.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM96.png) | 
+|:--:| 
+| *Figure 4: Gauge 96: Tungnaá River. Measured vs. simulated streamflow for the test period.* |
+
+| ![gauge_112.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM112.png) | 
+|:--:| 
+| *Figure 5: Gauge 112: Þjórsá River. Measured vs. simulated streamflow for the test period.* |
+
+| ![gauge_221.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM221.png) | 
+|:--:| 
+| *Figure 6: Gauge 221: Jökulsá River. Measured vs. simulated streamflow for the test period.* |
+
+
+
+# Further work
+For this project, training data was only available for 10 basins. Training on more basins would allow the model to better generalize and yield more accurate results. Although the model was trained on relatively few basins, its accuracy was good. These models can be used in daily inflow forecasts for hydropower operations in Iceland. 
+
+
+
 
 You can use the [editor on GitHub](https://github.com/hhelgason/CSE599-DL-final-project/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
