@@ -126,6 +126,7 @@ We also take a look at timeseries of inputs, cell and hidden states, and gate ac
 |:--:| 
 | *Figure 8: Timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days). Note that the x axis is days. * |
 
+It would be interesting to analyzing this data in more detail to better understand what the LSTM model is actually learning.
 
 # Further work
 For this project, training data was only available for 10 basins. Training on more basins would allow the model to better generalize and yield more accurate results. Although the model was trained on relatively few basins, its accuracy was good. These models can be used in daily inflow forecasts for hydropower operations in Iceland. 
