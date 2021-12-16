@@ -43,6 +43,7 @@ Model training was performed on Google Colab.
 Two model classes of the NeuralHydrology library were tested, the CudaLSTM (a network that uses the standard PyTorch LSTM implementation) and an entity-aware LSTM model (EA-LSTM). The EA-LSTM ingests static attributes of the watersheds and uses these attributes to compute the input gate activations. In this study, the glaciated area of each basin was used as a static attribute.
 
 The model training was run for 50 epochs. The following hyperparameters of the model were kept fixed in all runs:
+
 Learning rate: Epochs 1-29: 0.01, epochs 30-39: 0.005, epochs 40-50: 0.001
 
 Loss: NSE 
