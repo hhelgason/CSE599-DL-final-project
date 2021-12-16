@@ -100,7 +100,7 @@ Three of the gauges in the dataset represent inflow into hydropower reservoirs. 
 | 112 | 0.734 | 0.711 | 128 |
 | 221 | 0.845 | 0.814  | 256 |
 
-In figures 4-6, we plot the simulated vs. measured disharge for each gauge. 
+In figures 4-6, we plot the simulated vs. measured disharge for each gauge, for the unseen test period. 
 
 | ![VHM96.png](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM96.png) | 
 |:--:| 
