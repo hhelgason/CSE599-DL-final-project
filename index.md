@@ -53,7 +53,12 @@ Finally, the models were evaluated on the unseen test dataset. Also, the interna
 ## Results
 For the model classes that were tested, the entity-aware (EA-LSTM) performed better than the cuda-LSTM. For a hidden layer of 20, the cuda-LSTM resulted in a mean NSE of 0.64 vs. 0.72 for EA-LSTM. Thus, various numbers of hidden layers were tested for the EA-LSTM model. The training and validation losses are shown in figure 2, with higher run numbers corresponding to more hidden layers.
 
-The mean validation NSE for these runs is shown in figure 3.
+The train and validation loss for these runs is shown in figure 3.
+
+| ![losses.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/train_and_val_losses.PNG) | 
+|:--:| 
+| *Figure 2: Train and validation losses for several EA-LSTM model runs. * |
+<!-- https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/train_and_val_losses.PNG -->
 
 We see that after 50 epochs, the model with 256 hidden layers performs the best overall (mean NSE of all 10 catchments). The figures indicate that the model has not fully converged, so training for more epochs would potentially further improve the results. We see a spike in losses between epochs 20 and 30 and validation accuracy drops considerably. The reason for this is not clear. However, results for epochs 30-50 look reasonably good.
 
