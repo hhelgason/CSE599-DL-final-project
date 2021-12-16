@@ -12,6 +12,8 @@ The aim of the project was to develop a model to be used in streamflow forecasts
 ### Data
 
 Streamflow measurements and weather model output data from a selection of 10 glacial rivers in Iceland were used for model development. The locations of the measurement gauges and corresponding watersheds can be seen in figure 1. 
+<img width="871" alt="image" src="https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/layout_1.png">
+<!-- https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/layout_1.png -->
 
 Weather parameters from an atmospheric reanalysis dataset (REFERENCE) on a 2x2 km grid over Iceland were averaged over each watershed. The specific weather parameters used are listed in table 1. The target variable is a timeseries of area-averaged streamflow values with a daily time resolution. The streamflow measurements are quality coded. The streamflow measurements for the 10 basins are visualized in figure 2.
 
