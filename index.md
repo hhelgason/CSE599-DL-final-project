@@ -11,6 +11,9 @@ The aim of the project was to develop a model to be used in streamflow forecasts
 ## Methods
 ### Data
 
+#### Target data: Streamflow measurements
+#### Input data: Weather model output
+
 Streamflow measurements and weather model output data from a selection of 10 glacial rivers in Iceland were used for model development. The locations of the measurement gauges and corresponding watersheds can be seen in figure 1. 
 <!-- <img width="700" alt="image" src="https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/layout_1.png"> -->
 <!-- *Figure 1: Locations of gauges and corresponding watersheds used in this project* -->
@@ -21,7 +24,15 @@ Streamflow measurements and weather model output data from a selection of 10 gla
 
 Weather parameters from an atmospheric reanalysis dataset on a 2x2 km grid over Iceland were averaged over each watershed. The specific weather parameters used are temperature, precipitation, solid ratio of precipitation, wind speed, and downwelling shortwave and longwave radiation. The target variable is a timeseries of area-averaged streamflow values with a daily time resolution. 
 
-The dataset was split into train (11 years: 1999-10-01- 2010-09-30), validation (5 years: 2010-10-01 to 2015-09-30) and test (4 years: 2015-10-01 to 2019-08-31) sets.
+The dataset was split as follows: 
+<!-- (11 years: 1999-10-01- 2010-09-30), validation (5 years: 2010-10-01 to 2015-09-30) and test (4 years: 2015-10-01 to 2019-08-31) sets. -->
+
+| Period | Start date  | End date  | # of years  |
+| ------- | --- | --- | --- |
+| Train | 1999-10-01 | 2010-09-30 | 11 |
+| Validation | 2010-10-01 | 2015-09-30 | 5 |
+| Test | 2015-10-01 | 2019-08-31  | 4 |
+
 
 ### Code
 The [NeuralHydrology](https://github.com/neuralhydrology/neuralhydrology) python package was utilized to perform the experiments. The python package was developed by the AI for Earth Science group at Institute for Machine Learning, Johannes Kepler University. The package is built on top of Pytorch.
@@ -33,12 +44,19 @@ Two model classes of the NeuralHydrology library were tested, the CudaLSTM (a ne
 
 The model training was run for 50 epochs. The following hyperparameters of the model were kept fixed in all runs:
 Learning rate: Epochs 1-29: 0.01, epochs 30-39: 0.005, epochs 40-50: 0.001
+
 Loss: NSE 
+
 Optimizer: Adam
+
 Output dropout: 0.4
+
 Sequence length: 365
+
 Output activation: Linear
+
 Batch size: 256
+
 Various numbers of hidden layers were tested (20, 64, 96, 128, 196, 256).
 
 Results are evaluated with the NSE error metric.
@@ -53,11 +71,16 @@ Finally, the models were evaluated on the unseen test dataset. Also, the interna
 ## Results
 For the model classes that were tested, the entity-aware (EA-LSTM) performed better than the cuda-LSTM. For a hidden layer of 20, the cuda-LSTM resulted in a mean NSE of 0.64 vs. 0.72 for EA-LSTM. Thus, various numbers of hidden layers were tested for the EA-LSTM model. The training and validation losses are shown in figure 2, with higher run numbers corresponding to more hidden layers.
 
-The train and validation loss for these runs is shown in figure 3.
-
-| ![losses.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/train_and_val_losses.PNG) | 
+| ![train_and_val_losses.PNG](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/train_and_val_losses.PNG) | 
 |:--:| 
 | *Figure 2: Train and validation losses for several EA-LSTM model runs. * |
+
+The mean NSE for all 10 basin for these runs is shown in figure 3.
+| ![mean_nse_.PNG](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/mean_nse_.PNG) | 
+|:--:| 
+| *Figure 3: Mean NSE for several EA-LSTM model runs. * |
+
+<!-- https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/mean_nse_.PNG -->
 <!-- https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/train_and_val_losses.PNG -->
 
 We see that after 50 epochs, the model with 256 hidden layers performs the best overall (mean NSE of all 10 catchments). The figures indicate that the model has not fully converged, so training for more epochs would potentially further improve the results. We see a spike in losses between epochs 20 and 30 and validation accuracy drops considerably. The reason for this is not clear. However, results for epochs 30-50 look reasonably good.
@@ -101,9 +124,8 @@ We see some definite seasonal patterns in many of the cell states. We can identi
 We also take a look at timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days):
 | ![states_and_activations.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/run_9.png) | 
 |:--:| 
-| *Figure 9: Timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days)* |
+| *Figure 8: Timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days). Note that the x axis is days. * |
 
-Note that the x axis is days. 
 
 # Further work
 For this project, training data was only available for 10 basins. Training on more basins would allow the model to better generalize and yield more accurate results. Although the model was trained on relatively few basins, its accuracy was good. These models can be used in daily inflow forecasts for hydropower operations in Iceland. 
