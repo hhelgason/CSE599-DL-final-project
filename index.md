@@ -28,13 +28,44 @@ The [NeuralHydrology](https://github.com/neuralhydrology/neuralhydrology) python
 
 Model training was performed on Google Colab.
 
+### Model setup
+Two model classes of the NeuralHydrology library were tested, the CudaLSTM (a network that uses the standard PyTorch LSTM implementation) and an entity-aware LSTM model (EA-LSTM). The EA-LSTM ingests static attributes of the watersheds and uses these attributes to compute the input gate activations. In this study, the glaciated area of each basin was used as a static attribute.
 
+The model training was run for 50 epochs. The following hyperparameters of the model were kept fixed in all runs:
+Learning rate: Epochs 1-29: 0.01, epochs 30-39: 0.005, epochs 40-50: 0.001
+Loss: NSE 
+Optimizer: Adam
+Output dropout: 0.4
+Sequence length: 365
+Output activation: Linear
+Batch size: 256
+Various numbers of hidden layers were tested (20, 64, 96, 128, 196, 256).
 
+Results are evaluated with the NSE error metric.
 
+### Fine tuning
+Once a good mean NSE value for all basins had been obtained, the model was fine-tuned individually for two specific basins to maximize the performance for these basins. The two basins were selected because of they represent the inflow into hydropower reservoirs. Fine tuning involves.....
 
-> We propose an embarrassingly simple but very effective scheme for high-quality dense stereo reconstruction: (i) generate an approximate reconstruction with your favourite stereo matcher; (ii) rewarp the input images with that approximate model; (iii) with the initial reconstruction and the warped images as input, train a deep network to enhance the reconstruction by regressing a residual correction; and (iv) if desired, iterate the refinement with the new, improved reconstruction.
+Finally, the models were evaluated on the unseen test dataset. Also, the internal states and gate activations of the LSTM were analyzed. 
 
+## Results
+For the model classes that were tested, the entity-aware (EA-LSTM) performed better than the cuda-LSTM. For a hidden layer of 20, the cuda-LSTM resulted in a mean NSE of 0.64 vs. 0.72 for EA-LSTM. Thus, various numbers of hidden layers were tested for the EA-LSTM model. The training and validation losses are shown in figure 2, with higher run numbers corresponding to more hidden layers.
 
+The mean validation NSE for these runs is shown in figure 3.
+
+We see that after 50 epochs, the model with 256 hidden layers performs the best overall (mean NSE of all 10 catchments). The figures indicate that the model has not fully converged, so training for more epochs would potentially further improve the results. We see a spike in losses between epochs 20 and 30 and validation accuracy drops considerably. The reason for this is not clear. However, results for epochs 30-50 look reasonably good.
+
+<!-- ## Fine-tuning
+We select three gauges for fine-tuning, gauges no. 96, 112 and 221. We perform fine-tuning for the EA-LSTM model that gives the best results for each basin. For gauge 96, this is  
+
+We fine-tune this model (EA-LSTM), hidden=256) for two of the basins. An improvement of  validation NSE xx and xx was obtained. The simulated streamflow for the validation and test periods is shown in figures x.  -->
+Three of the gauges in the dataset represent inflow into hydropower reservoirs. We therefore use the EA-LSTM model with a hidden size that gives the best results for each basin. In table 1, we see the validation and test NSE scores of these gauges, as well as the corresponding number of hidden layers.
+
+| Gauge | Val. NSE  | Test NSE  | Hidden  |
+| ------- | --- | --- | --- |
+| 96 | 0.789 | 0.719 | 20 |
+| 112 | 0.734 | 0.711 | 128 |
+| 221 | 0.845 | 0.814  | 256 |
 
 
 You can use the [editor on GitHub](https://github.com/hhelgason/CSE599-DL-final-project/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
