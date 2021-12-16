@@ -2,6 +2,8 @@
 CSE 599 Deep Learning final project - Hordur Helgason
 12/15/21
 
+[**Project video overview (closer to 4 minutes, I suggest 1.5x!)**](https://youtu.be/iFWH0bqFewA)
+
 ## Introduction
 Applications of DL methods in streamflow modeling have yielded very good results, with DL models substantially outperforming benchmark physically based models (e.g. Kratzert et al., 2019). DL methods of modeling hydrologic processes in catchments where runoff primarily originates from snow and glacier melt have not yet received much attention from the scientific community. Accurately modeling river discharge in snow/glacier melt-dominated catchments is highly important for water resource management.
 In this final project, I trained an LSTM model to predict streamflow in snow/glacier melt-dominated catchments. I also analized the states and activations of a trained LSTM, to see if the LSTM internals resemble physically meaningful quantities. 
