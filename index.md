@@ -86,45 +86,26 @@ In figures 4-6, we plot the simulated vs. measured disharge for each gauge.
 We see that the performance of these models is rather good, especially for gauge 221 (Jökulsá River).
 
 ## LSTM states and activations
+For a model run with 20 hidden layers, we take a look at how the actual cell state values evolve with time for a highly glaciated basin.
+| ![hidden_state.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/18.png) | 
+|:--:| 
+| *Figure 7: Cell states for gauge 102: Jökulsá á Fjöllum River. The highlighted cell looks like snow.* |
+
+We see some definite seasonal patterns in many of the cell states. We can identify a cell state whose value looks similar to how snow accumulates in winter and melts in spring. We also see a state that looks like the seasonal variations of temperature (the state with the highest values). We also see some states that peak in late summer, when glacial melt is at its peak. 
+
+We also take a look at timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days):
+| ![states_and_activations.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/run_9.png) | 
+|:--:| 
+| *Figure 9: Timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days)* |
+
+Note that the x axis is days. 
 
 # Further work
 For this project, training data was only available for 10 basins. Training on more basins would allow the model to better generalize and yield more accurate results. Although the model was trained on relatively few basins, its accuracy was good. These models can be used in daily inflow forecasts for hydropower operations in Iceland. 
 
+Thanks to the developers of NeuralHydrology. The code for LSTM state and activations was obtained from their tutorial. 
+
+# References
+Kratzert, F., Klotz, D., Herrnegger, M., Sampson, A. K., Hochreiter, S., & Nearing, G. (2019a). Toward improved predictions in ungauged basins: Exploiting the power of machine learning. Water Resources Research, 55(12), 11344-11354. https://doi.org/10.1029/2019WR026065
 
 
-
-You can use the [editor on GitHub](https://github.com/hhelgason/CSE599-DL-final-project/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hhelgason/CSE599-DL-final-project/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
