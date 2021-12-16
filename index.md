@@ -18,7 +18,7 @@ Streamflow measurements and weather model output data from a selection of 10 gla
 <!-- <img width="700" alt="image" src="https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/layout_1.png"> -->
 <!-- *Figure 1: Locations of gauges and corresponding watersheds used in this project* -->
 
-| ![map.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/layout_1.png) | 
+| ![layout_1.png](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/layout_1.png) | 
 |:--:| 
 | *Figure 1: Locations of the gauges and corresponding watersheds that are used in this project* |
 
@@ -99,15 +99,15 @@ Three of the gauges in the dataset represent inflow into hydropower reservoirs. 
 
 In figures 4-6, we plot the simulated vs. measured disharge for each gauge. 
 
-| ![gauge_96.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM96.png) | 
+| ![VHM96.png](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM96.png) | 
 |:--:| 
 | *Figure 4: Gauge 96: Tungnaá River. Measured vs. simulated streamflow for the test period.* |
 
-| ![gauge_112.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM112.png) | 
+| ![VHM112.png](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM112.png) | 
 |:--:| 
 | *Figure 5: Gauge 112: Þjórsá River. Measured vs. simulated streamflow for the test period.* |
 
-| ![gauge_221.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM221.png) | 
+| ![VHM221.png](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/VHM221.png) | 
 |:--:| 
 | *Figure 6: Gauge 221: Jökulsá River. Measured vs. simulated streamflow for the test period.* |
 
@@ -115,14 +115,14 @@ We see that the performance of these models is rather good, especially for gauge
 
 ## LSTM states and activations
 For a model run with 20 hidden layers, we take a look at how the actual cell state values evolve with time for a highly glaciated basin.
-| ![hidden_state.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/18.png) | 
+| ![18.png](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/18.png) | 
 |:--:| 
 | *Figure 7: Cell states for gauge 102: Jökulsá á Fjöllum River. The highlighted cell looks like snow.* |
 
 We see some definite seasonal patterns in many of the cell states. We can identify a cell state whose value looks similar to how snow accumulates in winter and melts in spring. We also see a state that looks like the seasonal variations of temperature (the state with the highest values). We also see some states that peak in late summer, when glacial melt is at its peak. 
 
 We also take a look at timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days):
-| ![states_and_activations.jpg](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/run_9.png) | 
+| ![run_9.png](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/run_9.png) | 
 |:--:| 
 | *Figure 8: Timeseries of inputs, cell and hidden states, and gate activations while the LSTM processes a sequence of a full sample (365 days). Note that the x axis is days. * |
 
