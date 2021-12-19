@@ -75,7 +75,7 @@ Finally, the models were evaluated on the unseen test dataset. Also, the interna
 ## Results
 For the model classes that were tested, the entity-aware (EA-LSTM) performed better than the cuda-LSTM. For a hidden layer of 20, the cuda-LSTM resulted in a mean NSE of 0.64 vs. 0.72 for EA-LSTM. Thus, various numbers of hidden layers were tested for the EA-LSTM model. The training and validation losses are shown in figure 2, with higher run numbers corresponding to more hidden layers.
 
-| ![train_and_valid_losses.PNG](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/train_and_valid_losses.PNG) | 
+| ![train_validation_loss.PNG](https://github.com/hhelgason/CSE599-DL-final-project/blob/main/docs/assets/css/train_validation_loss.PNG) | 
 |:--:| 
 | *Figure 2: Train and validation losses for several EA-LSTM model runs. * |
 
